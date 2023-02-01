@@ -19,32 +19,34 @@ end
 
 
 return require('packer').startup(function(use)
-  local use = use
   use 'wbthomason/packer.nvim'
+  local use = use
   use 'nvim-treesitter/nvim-treesitter'
   use {'neoclide/coc.nvim', branch = 'release'}
   use 'sheerun/vim-polyglot'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
+  use 'yamatsum/nvim-cursorline'
+  use 'jremmen/vim-ripgrep'
+  use 'marko-cerovac/material.nvim'
+  use 'fannheyward/telescope-coc.nvim'
+  use 'norcalli/nvim-colorizer.lua'
+  use 'tpope/vim-fugitive'
+
   use {
     "nvim-telescope/telescope.nvim",
     requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
   }
-  use 'jremmen/vim-ripgrep'
-  use 'marko-cerovac/material.nvim'
-
-  use 'fannheyward/telescope-coc.nvim'
-  use 'norcalli/nvim-colorizer.lua'
   require'colorizer'.setup({
       '*'; -- Highlight all files, but customize some others.
       css = { css = true; }; -- Enable parsing rgb(...) functions in css.
       html = { names = false; }
     })
 
-  use {
-    'mg979/vim-visual-multi',
-    branch = 'master'
-  }
+  --use {
+    --'mg979/vim-visual-multi',
+    --branch = 'master'
+  --}
 
 
   use {
@@ -53,7 +55,6 @@ return require('packer').startup(function(use)
   }
 
 
-  use 'yamatsum/nvim-cursorline'
 
   use {
     'nvim-lualine/lualine.nvim',
@@ -70,35 +71,41 @@ return require('packer').startup(function(use)
         local dashboard = require("alpha.themes.dashboard")
 
         local ascci = {
-          "          ",
-          "     ",
-          "     ",
-          "     ",
-          "     ",
-          "     ",
-          "     ",
-          "     ",
-          "     ",
-          "     ",
-          "     ",
-          "                    ,,,,,,,,,,,,,,,,,,,,          ,,,,,,,,         ,,,,,,,",
-          "                 ▄▓                      ▒     ,▄╝        └ε    ╔▓         ▒",
-          "              ╓╣▓▓▓   .╓╓╓╓╓╓╓╓╓╓╓╓,     ╠   ▄▓▓▓▒    .    b ╓▄▓▓▓    ,    ▒",
-          "             ▓▓▓▓▓▓                 ╠    ╠ ]▓▓▓▓▓▒    ▒    b╣▓▓▓▓▓    ╠    ▒",
-          "             ▓▓▓▓▓▓▄╓╓╓╓╓╓╓╓╓     ,Θ     ╩ ▐▓▓▓▓▓▒    ▒    b▓▓▓▓▓▓    ╠    ▒",
-          "             ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀     é└     é  ▐▓▓▓▓▓▒    ▒    ¼▓▓▓▓▓▀    ╠    ▒",
-          "             ╫▓▓▓▓▓▓▓▓▓▓▓▓└    ²╙     ╔┴   ▐▓▓▓▓▓▌    ²╕    ╙▓▓▓╜    é    .Γ",
-          "                     ,▓▓╙    ,╛     ╓╙     ▐▓▓▓▓▓▓▌     Σ,    ╙    ╓┴    )╙",
-        "                   .╣▓╩     ê     ,╛        ▓▓▓▓▓▓▓▓▓▄    └¼      .╛     ê",
-        "                  ▄▓▀     φ┘    .Θ          ╙▓▓▓▓▓▓▓▓▓µ    ²∞αæ≈∩     ╔┘",
-        "                ▄▓▌     ╒╙     φ░             ╢▓▓▓▓▓▓▓▓▌      ▌     ,╛",
-        "              ╔▓▓▓⌐    Θ                 ╘⌐    └▓▓▓▓▓▓▓▓▓µ    ▌    φ",
-        "            ,▓▓▓▓▓⌐   ',,,,,,,,,,,,,,,    µ      ╙▓▓▓▓▓▓▓▒    ▌    ╠",
-        "            ║▓▓▓▓▓⌐                       µ        ╫▓▓▓▓▓▒         ╠",
-        "            ║▓▓▓▓▓▄╓╓╓╓╓╓╓╓╓╓╓╓╓╓╓╓╓╓╓╓╓╓#         ▐▓▓▓▓▓▌╥╓╓╓╓╓╓╓æ╛",
-        "            ║▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀           ▐▓▓▓▓▓▓▓▓▓▓▓▓▀╙",
-        "            ╙▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀╙             '▓▓▓▓▓▓▓▓▓▓╨",
-      }
+          "            :h-                                  Nhy`               ",
+          "           -mh.                           h.    `Ndho               ",
+          "           hmh+                          oNm.   oNdhh               ",
+          "          `Nmhd`                        /NNmd  /NNhhd               ",
+          "          -NNhhy                      `hMNmmm`+NNdhhh               ",
+          "          .NNmhhs              ```....`..-:/./mNdhhh+               ",
+          "           mNNdhhh-     `.-::///+++////++//:--.`-/sd`               ",
+          "           oNNNdhhdo..://++//++++++/+++//++///++/-.`                ",
+          "      y.   `mNNNmhhhdy+/++++//+/////++//+++///++////-` `/oos:       ",
+          " .    Nmy:  :NNNNmhhhhdy+/++/+++///:.....--:////+++///:.`:s+        ",
+          " h-   dNmNmy oNNNNNdhhhhy:/+/+++/-         ---:/+++//++//.`         ",
+          " hd+` -NNNy`./dNNNNNhhhh+-://///    -+oo:`  ::-:+////++///:`        ",
+          " /Nmhs+oss-:++/dNNNmhho:--::///    /mmmmmo  ../-///++///////.       ",
+          "  oNNdhhhhhhhs//osso/:---:::///    /yyyyso  ..o+-//////////:/.      ",
+          "   /mNNNmdhhhh/://+///::://////     -:::- ..+sy+:////////::/:/.     ",
+          "     /hNNNdhhs--:/+++////++/////.      ..-/yhhs-/////////::/::/`    ",
+          "       .ooo+/-::::/+///////++++//-/ossyyhhhhs/:///////:::/::::/:    ",
+          "       -///:::::::////++///+++/////:/+ooo+/::///////.::://::---+`   ",
+          "       /////+//++++/////+////-..//////////::-:::--`.:///:---:::/:   ",
+          "       //+++//++++++////+++///::--                 .::::-------::   ",
+          "       :/++++///////////++++//////.                -:/:----::../-   ",
+          "       -/++++//++///+//////////////               .::::---:::-.+`   ",
+          "       `////////////////////////////:.            --::-----...-/    ",
+          "        -///://////////////////////::::-..      :-:-:-..-::.`.+`    ",
+          "         :/://///:///::://::://::::::/:::::::-:---::-.-....``/- -   ",
+          "           ::::://::://::::::::::::::----------..-:....`.../- -+oo/ ",
+          "            -/:::-:::::---://:-::-::::----::---.-.......`-/.      ``",
+          "           s-`::--:::------:////----:---.-:::...-.....`./:          ",
+          "          yMNy.`::-.--::..-dmmhhhs-..-.-.......`.....-/:`           ",
+          "         oMNNNh. `-::--...:NNNdhhh/.--.`..``.......:/-              ",
+          "        :dy+:`      .-::-..NNNhhd+``..`...````.-::-`                ",
+          "                        .-:mNdhh:.......--::::-`                    ",
+          "                           yNh/..------..`                          ",
+          "                                                                    ",
+        }
 
       dashboard.section.header.val = ascci
 
