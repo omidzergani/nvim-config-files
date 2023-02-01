@@ -31,6 +31,12 @@ return require('packer').startup(function(use)
   use 'fannheyward/telescope-coc.nvim'
   use 'norcalli/nvim-colorizer.lua'
   use 'tpope/vim-fugitive'
+  use 'lambdalisue/fern.vim'
+  use 'lambdalisue/fern-git-status.vim'
+  use 'lambdalisue/glyph-palette.vim'
+  use 'lambdalisue/nerdfont.vim'
+  use 'lambdalisue/fern-renderer-nerdfont.vim'
+
 
   use {
     "nvim-telescope/telescope.nvim",
@@ -246,7 +252,9 @@ return require('packer').startup(function(use)
   key_mapper('n', '<leader>zen', ':ZenMode<CR>')
 
 
+  key_mapper('n', '<leader>pv', ':Fern .<CR>')
 
+  key_mapper('n', '<leader>ph', ':Fern %<CR>')
 
 end)
 
