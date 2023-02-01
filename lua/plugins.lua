@@ -7,7 +7,6 @@ vim.cmd 'colorscheme material'
 
 
 
-
 local key_mapper = function(mode, key, result)
   vim.api.nvim_set_keymap(
     mode,
@@ -37,22 +36,14 @@ return require('packer').startup(function(use)
     "nvim-telescope/telescope.nvim",
     requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
   }
+
+
   require'colorizer'.setup({
       '*'; -- Highlight all files, but customize some others.
       css = { css = true; }; -- Enable parsing rgb(...) functions in css.
       html = { names = false; }
     })
 
-  --use {
-    --'mg979/vim-visual-multi',
-    --branch = 'master'
-  --}
-
-
-  use {
-    'kosayoda/nvim-lightbulb',
-    requires = 'antoinemadec/FixCursorHold.nvim',
-  }
 
 
 
@@ -61,6 +52,16 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+        window = {
+          --width = .80
+        }
+      }
+    end
+  }
 
 
   use({
@@ -192,6 +193,7 @@ return require('packer').startup(function(use)
       lualine_style = 'stealth' -- the stealth style
     })
 
+
   local Preview = function()
     return require('telescope.themes').get_dropdown({
         initial_mode = 'insert',
@@ -241,6 +243,7 @@ return require('packer').startup(function(use)
   key_mapper('n', '<leader>fs', '<cmd>lua CallPreviewToOpenTelescopeLiveGrep()<CR>')
   key_mapper('n', '<leader>fh', ':lua CallPreviewToOpenTelescopeHelpTags()<CR>')
   key_mapper('n', '<leader>fb', ':lua CallPreviewToOpenTelescopeBuffers()<CR>')
+  key_mapper('n', '<leader>zen', ':ZenMode<CR>')
 
 
 
