@@ -1,0 +1,8 @@
+{
+  "diagnostic.display": true,
+  "coc.preferences.formatOnSaveFiletypes": ["*"],
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "coc.source.OmniSharp.enable": true,
+  "coc.source.OmniSharp.triggerCharacters": "."
+}
