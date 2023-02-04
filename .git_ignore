@@ -1,0 +1,9 @@
+.DS_Store
+.luarc.json
+"\\"
+autoload/
+lazy-lock.json
+lua/basic.lua
+lua/header.sh
+plugin.vim
+plugin/
