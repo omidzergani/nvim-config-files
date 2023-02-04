@@ -24,9 +24,10 @@ packer.init({
   package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack')
 })
 --- startup and add configure plugins
-packer.startup(function()
-  local use = use
-  end
-)
+--packer.startup(function()
+  --local use = use
+    --use 'wbthomason/packer.nvim'
+  --end
+--)
 
 

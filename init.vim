@@ -39,8 +39,6 @@ Plug 'junegunn/fzf.vim'
 " Use release branch (recommend)
 Plug 'preservim/vimux'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'lambdalisue/fern.vim'
-Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'preservim/nerdcommenter'
 Plug 'mattn/emmet-vim'
 Plug 'Valloric/MatchTagAlways'
@@ -152,10 +150,6 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
-
-function! s:initrn() abort
-    nnoremap ff <Plug>(fern-action-open:select)
-endfunction
 
 
 
@@ -321,5 +315,21 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
+
+
+
+
+
+augroup my-glyph-palette
+  autocmd! *
+  autocmd FileType fern call glyph_palette#apply()
+  autocmd FileType nerdtree,startify call glyph_palette#apply()
+augroup END
+
+
+
+let g:fern#renderer = "nerdfont"
+
+
 
 
